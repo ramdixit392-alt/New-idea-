@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class tribonacci_sereies{
+public class Main {
 
     static int tribonacci(int n) {
         if (n == 0) return 0;
