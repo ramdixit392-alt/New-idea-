@@ -11,10 +11,20 @@ GitHub is a cloud-based platform where we can store Git repositories, share code
 Answer:
 Git → Version control tool installed on your computer.
 GitHub → Online platform used to host Git repositories.
-
 Simple example:
 Git is the tool; GitHub is the place where you store and share your code online.
 
 4. What is git commit?
 Answer:
 git commit saves the changes made to the project in the local Git repository.
+Q5. What is a commit?
+A commit is a saved snapshot of your changes.
+git add .
+git commit -m "Added login feature"
+
+Q6. What is git pull?
+It downloads the latest changes from the remote repository and integrates them into your local branch.
+git pull
+
+Q7. What is git push?
+It uploads your local commits to GitHub.
