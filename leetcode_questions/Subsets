@@ -1,2 +1,45 @@
-Subset1 and Subset2 
-Code 
+#Subsets
+class Solution {
+
+    List<List<Integer>> ans = new ArrayList<>();
+
+    void fun(ArrayList<Integer> nums, ArrayList<Integer> tmp) {
+
+        ans.add(new ArrayList<>(tmp));
+
+        if (nums.size() == 0) {
+            return;
+        }
+
+        for (int i = 0; i < nums.size(); i++) {
+
+            ArrayList<Integer> ip = new ArrayList<>(nums);
+            ArrayList<Integer> op = new ArrayList<>(tmp);
+
+            op.add(nums.get(i));
+
+            for (int j = 0; j <= i; j++) {
+                ip.remove(0);
+            }
+
+            fun(ip, op);
+        }
+    }
+
+    public List<List<Integer>> subsets(int[] nums) {
+
+        ans.clear();
+
+        ArrayList<Integer> input = new ArrayList<>();
+
+        for (int x : nums) {
+            input.add(x);
+        }
+
+        ArrayList<Integer> op = new ArrayList<>();
+
+        fun(input, op);
+
+        return ans;
+    }
+}
