@@ -1,0 +1,5 @@
+class Solution(object):
+    def isPalindromic(self, s):
+        binary_string = ''.join(format(ord(char),'08b') for char in s)
+        return binary_string == binary_string[::-1]
+        
