@@ -1,0 +1,32 @@
+vector<vector<int>>ans;
+void fun(vector<int>& nums, vector<int>& tmp){
+
+    if(nums.size()==0){
+        ans.push_back(tmp);
+        return;
+    }
+    for(int i=0; i<nums.size(); i++){
+        if(i > 0 && nums[i] == nums[i-1]){
+            continue;
+        }
+        vector<int>ip=nums, op=tmp;
+        op.push_back(nums[i]);
+        ip.erase(ip.begin() + i);
+
+        fun(ip, op);
+
+    }
+
+}
+class Solution {
+public:
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+           
+        ans.clear();
+        vector<int>tmp;
+        sort(nums.begin(), nums.end());
+        fun(nums, tmp);
+        return ans;
+        
+    }
+};
