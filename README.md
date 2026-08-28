@@ -29,3 +29,6 @@ git pull
 Q7. What is git push?
 It uploads your local commits to GitHub.
 
+#Now learn HTML, CSS and daily practice 
+
+
