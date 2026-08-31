@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int countSpecialIntegers(vector<int>& nums) {
+        int count = 0;
+        set<int> check;
+        for(int i = 0; i <= nums.size()-1;
+        i++){
+            int x = nums[i];
+            if(check.count(x))
+                continue;
+            check.insert(x);
+            int first = -1;
+            int last = -1;
+         for(int j = 0; j < nums.size(); j++){
+            if(nums[j] == x){
+                if(first == -1)
+                    first = j;
+                last = j;
+            }
+         }
+            bool curr = true;
+            for(int j = first; j<= last; j++){
+                if(nums[j] != x){
+                    curr = false;
+                    break;
+                }
+            }
+            if(curr)
+                count++;
+        }
+            return count;
+    }
+};
