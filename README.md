@@ -31,6 +31,8 @@ It uploads your local commits to GitHub.
 
 #Now learn HTML, CSS and daily practice 
 #30 aug: count integer appering in a single block
+#29 aug: bishop digonal moves
+
 # Learn Dynamic Programming
 
 
