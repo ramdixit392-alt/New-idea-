@@ -34,5 +34,6 @@ It uploads your local commits to GitHub.
 #29 aug: bishop digonal moves
 
 # Learn Dynamic Programming
+# Learn JavaScript 2sep
 
 
