@@ -1,0 +1,26 @@
+int dp[102];
+
+int fun(int i, vector<int>&nums) {
+        if (i >= nums.size()) return 0;
+        
+        if(dp[i] !=-1) return dp[i];
+
+        int c1 = nums[i] + fun(i + 2, nums);
+        int c2 = fun(i + 1, nums);
+
+        int ans=max(c1,c2);
+
+        dp[i] = ans;
+
+        return ans;
+    }
+class Solution {
+    public:
+
+    int rob(vector<int>& nums) {
+        for(int i= 0; i<=101; i++){
+            dp[i]=-1;
+        }
+        return fun(0, nums);
+    }
+};
