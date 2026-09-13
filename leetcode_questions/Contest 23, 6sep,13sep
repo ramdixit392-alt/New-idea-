@@ -36,3 +36,38 @@ public:
         
     }
 };
+#cyclically shift row and column
+class Solution {
+public:
+    vector<vector<int>> cyclicShift(int n, vector<vector<int>>& arr, vector<int>& rowShift, vector<int>& colShift) {
+         //int n = arr.size();
+        for(int i = 0; i < n; i++){
+            int k = rowShift[i];  
+            while(k > 0){
+
+                int first = arr[i][0];
+
+                for(int j = 0; j < n-1; j++){
+                    arr[i][j] = arr[i][j+1];
+                    
+                }
+                arr[i][n-1] = first;
+                k--;
+            }
+        }
+        for(int j = 0; j < n; j++){
+            int k = colShift[j];
+            while(k > 0){
+
+                int first = arr[0][j];
+
+                for(int i = 0; i < n-1; i++){
+                    arr[i][j] = arr[i+1][j];
+            }
+                arr[n-1][j] = first;
+                k--;
+        }
+    }
+    return arr;
+    }
+};
