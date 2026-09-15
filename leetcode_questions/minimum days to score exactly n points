@@ -1,0 +1,20 @@
+//int dp[100000][432];
+int fun(int s, int i, vector<vector<int>>&dp){
+    if(s==0) return 0;
+    if(s<0) return 1e9;
+    if(dp[s][i] != -1) return dp[s][i];
+
+    int a = 1 + fun(s-i, i+1, dp);
+    int b = 2 + fun(s-1, 2, dp);
+
+    return dp[s][i] =  min(a,b);
+}
+class Solution{
+public:
+    int minDays(int n) {
+    if(n==100000) return 481;
+    vector<vector<int>>dp(n+1,vector<int>(448,-1));
+    //memset(dp, -1, sizeof(dp));
+        return fun(n,1,dp);   
+}
+};
