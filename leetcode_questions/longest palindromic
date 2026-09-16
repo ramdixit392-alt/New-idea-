@@ -1,0 +1,58 @@
+int dp[1001][1001];
+
+int fun(int i, int j, string& s){
+    if(i>j) return 0;
+    if(i==j) return 1;
+    if(dp[i][j] != -1) return dp[i][j];
+
+    int m = 0;
+
+    if(s[i] == s[j]){
+        int a = 2+fun(i+1,j-1,s);
+        m=max(m,a); 
+    }else{
+        int a = fun(i+1,j,s);
+        int b = fun(i,j-1,s);
+
+        m=max(m,a);
+        m=max(m,b);
+    }
+        return dp[i][j] = m;
+    }
+
+class Solution {
+public:
+    int longestPalindromeSubseq(string s) {
+        memset(dp,-1,sizeof(dp));
+        return fun(0,s.size()-1,s);
+        
+    }
+};
+# reverse string 2nd method
+int dp[1001][1001];
+
+int fun(int i , int j, string& s, string& t){
+    if(i>=s.size() || j>=t.size()) return 0;
+    if(dp[i][j] != -1) return dp[i][j];
+    
+     if (s[i] == t[j]) 
+     return 1 + fun(i + 1, j + 1, s ,t);
+    
+
+    int a = fun(i + 1, j, s, t);
+    int b = fun(i, j + 1, s, t);
+
+    return dp[i][j] = max(a, b);
+}
+
+
+class Solution {
+public:
+    int longestPalindromeSubseq(string s) {
+    string t = s;
+    reverse(t.begin(), t.end());
+    memset(dp,-1,sizeof(dp));
+        return fun(0,0,s,t);
+        
+    }
+};
