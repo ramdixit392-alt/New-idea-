@@ -1,0 +1,52 @@
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector<vector<int>>v1;
+        
+        int i=0;
+        for(auto a:nums){
+            if(v1.size()==0 || a>v1.back()[0]){
+                v1.push_back({a,i});
+            }else{
+                // for(int j=0;j<v1.size();j++){
+                //     if(v1[j][0]>=a){
+                //         if(i>v1[j][1]){
+                //             v1[j]={a,i};
+                //         }
+                //         break;
+                //     }
+                // }
+
+                int l=0;
+                int h=v1.size()-1;
+                int id=-1;
+
+                while(l<=h){
+                    int mid=(l+h)/2;
+                    if(v1[mid][0]>=a){
+                        id=mid;
+                        h=mid-1;
+                    }else{
+                        l=mid+1;
+                    }
+                }
+
+                if(i>v1[id][1]){
+                    v1[id]={a,i};
+                }
+            }
+            i++;
+
+            // for(auto a:v1) cout<<a[0]<<","<<a[1]<<"  ";
+            // cout<<endl;
+        }
+
+
+        //for(auto a:v1) cout<<a[0]<<" ";
+
+        
+
+
+        return v1.size();
+    }
+};
