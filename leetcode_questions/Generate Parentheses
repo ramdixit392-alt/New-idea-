@@ -1,0 +1,25 @@
+void fun(int a, int b, int n, string s, vector<string>& v1) {
+       if (a > n || b > a || b > a) {
+            return;
+        }
+
+        if (s.size() == 2 * n) {
+            v1.push_back(s);
+            return;
+        }
+         
+        fun(a + 1, b, n, s + "(", v1);
+        fun(a, b + 1, n, s + ")", v1);
+}
+
+       
+class Solution {
+public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> v1;
+        fun(0, 0, n, "", v1);
+
+        return v1;
+
+    }
+};
