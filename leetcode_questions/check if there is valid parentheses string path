@@ -1,0 +1,33 @@
+int dp[101][101][101][101];
+
+int fun(int i,int j,vector<vector<char>>&grid,int a,int b){
+   int n=grid.size();
+   int m=grid[0].size();
+
+   int tt=n+m-1;
+
+   if(i>=n || j>=m || b>a || a>tt/2 || b>tt/2) return 0;
+
+   if(grid[i][j]=='(') a++;
+   else b++;
+
+   if(i==n-1 && j==m-1){
+      return a==b;
+   }
+
+   if(dp[i][j][a][b]!=-1) return dp[i][j][a][b];
+
+
+   int c1=fun(i+1,j,grid,a,b);
+   int c2=fun(i,j+1,grid,a,b);
+
+   return dp[i][j][a][b]=c1|c2;
+}
+
+class Solution {
+public:
+    bool hasValidPath(vector<vector<char>>& grid) {
+        memset(dp,-1,sizeof(dp));
+        return fun(0,0,grid,0,0);
+    }
+};
