@@ -1,0 +1,15 @@
+
+int fun(int empty, int exchange) {
+
+    if (empty < exchange)
+        return 0;
+
+    empty = empty - exchange + 1;
+        return 1 + fun(empty, exchange);
+    }
+class Solution {
+public:
+    int numWaterBottles(int numBottles, int numExchange) {
+        return numBottles + fun(numBottles, numExchange);
+    }
+};
