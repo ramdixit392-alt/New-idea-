@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int minRotations(string s) {
+        int ans = 0; 
+        int curr = 0;
+
+        for(char c : s){
+            int x = c - '0';
+            int a = abs(curr - x);
+
+            ans += min(a, 10 - a);
+            curr = x;
+        }
+        return ans;
+    }
+};
