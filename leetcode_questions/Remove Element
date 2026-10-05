@@ -1,0 +1,21 @@
+int fun(vector<int>& nums, int val, int i, int k) {
+        
+        if (i == nums.size())
+            return k;
+
+        if (nums[i] != val) {
+            nums[k] = nums[i];
+            k++;
+        }
+
+        return fun(nums, val, i + 1, k);
+    }
+
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+
+        return fun(nums, val, 0, 0);
+    
+    }
+};
