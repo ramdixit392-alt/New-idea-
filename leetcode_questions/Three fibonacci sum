@@ -1,0 +1,15 @@
+bool fun(int n, int a, int b, int c){
+    int sum = a+b+c;
+
+    if(sum == n) return true;
+
+    if(sum > n) return false;
+    return fun(n, b,c,b+c);
+}
+
+class Solution {
+public:
+    bool threeFibonacciSum(int n) {
+        return fun(n,0,1,1);
+    }
+};
