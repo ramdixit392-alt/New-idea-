@@ -1,0 +1,29 @@
+int dp[201][201];
+
+int  fun(int i, int j, vector<vector<int>>& grid){
+    int n = grid.size();
+    int m = grid[i].size();
+    if(i==n-1){
+        return grid[i][j];
+    }
+    if(dp[i][j] != -1e9) return dp[i][j];
+
+    if(i>=n || j>=m) return 1e9;
+    int c1 = grid[i][j]+fun(i+1,j,grid);
+    int c2 = grid[i][j]+fun(i+1,j+1,grid);
+    return dp[i][j] = min(c1,c2);
+}
+
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        //memset(dp,-1,sizeof(dp));
+        for(int i=0;i<201;i++){
+            for(int j=0;j<201;j++){
+        dp[i][j] = -1e9;
+            }
+        }
+        return fun(0,0,triangle);
+        
+    }
+};
