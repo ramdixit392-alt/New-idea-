@@ -1,0 +1,19 @@
+int fun(int i, vector<int>& nums){
+
+    if(i >= nums.size()) return 0;
+
+    if(i > 0 && nums[i] == nums[i - 1]){
+        return 1 + fun(i + 1, nums);
+    }
+    return fun(i + 1, nums);
+    
+}
+
+
+class Solution {
+public:
+    int minDeletions(vector<int>& nums) {
+        return fun(0, nums);
+        
+    }
+};
