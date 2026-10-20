@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<int> targetIndices(vector<int>& nums, int target) {
+        sort(nums.begin(),nums.end());
+        int i,k=0,a=0;
+        vector<int>v1;
+        vector<int>v2;
+
+        for(i=0;i<size(nums);i++){
+            if(nums[i]==target){
+            v1.push_back(i);
+            k++;
+            }
+        }
+        if(k==0){
+            
+            
+        }
+        else{
+            int n;
+            n=size(v1);
+            v2.push_back(v1[0]);
+            v2.push_back(v1[n-1]);
+            
+        }
+
+       return v1;
+    }
+};
