@@ -1,0 +1,23 @@
+int fun(vector<int>& nums, int i){
+    if(i >= nums.size()-1)
+    return 0;
+
+    int ans = 0;
+    if(nums[i] > nums[i-1] && nums[i] > nums[i+1])
+    ans += nums[i];
+
+    else if(nums[i] < nums[i-1] && nums[i] < nums[i+1])
+    ans -= nums[i];
+
+    return ans + fun(nums, i+1);
+}
+
+
+class Solution {
+public:
+    int peakValleyDifference(vector<int>& nums) {
+        if(nums.size() < 0) return 0;
+
+        return fun(nums, 1);
+    }
+};©leetcode
