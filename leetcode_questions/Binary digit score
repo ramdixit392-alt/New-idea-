@@ -1,0 +1,22 @@
+int fun(int n){
+    if(n == 0)
+    return 0;
+
+    return(n%2) + fun(n/2);
+}
+
+class Solution {
+public:
+    int calculateScore(int a, int b) {
+        int s1 = fun(a);
+        int s2 = fun(b);
+
+        if(s1>=s2){
+            return s1*s2;
+            
+        }
+        else{
+            return s2/s1;
+        }
+    }
+};
