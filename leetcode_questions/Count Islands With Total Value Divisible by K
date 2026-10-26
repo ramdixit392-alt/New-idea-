@@ -1,0 +1,50 @@
+int fun(int i,int j,vector<vector<int>>&grid,vector<vector<int>>&vis,int k){
+    int n=grid.size();
+    int m=grid[0].size();
+    queue<vector<int>>q1;
+    q1.push({i,j});
+    vis[i][j]=1;
+
+    vector<vector<int>>dir={{0,1},{1,0},{-1,0},{0,-1}};
+
+    int ans=0;
+
+    while(!q1.empty()){
+        int x=q1.front()[0];
+        int y=q1.front()[1];
+        ans=(ans+grid[x][y])%k;
+        q1.pop();
+
+        for(auto a:dir){
+            int nx=x+a[0];
+            int ny=y+a[1];
+
+            if(nx>=n || ny>=m || nx<0 || ny<0 || grid[nx][ny]==0 || vis[nx][ny]==1) continue;
+            vis[nx][ny]=1;
+            q1.push({nx,ny});
+        }
+    }
+
+    return ans%k==0;
+}
+
+class Solution {
+public:
+    int countIslands(vector<vector<int>>& grid, int k) {
+        int n=grid.size();
+        int m=grid[0].size();
+
+        vector<vector<int>>vis(n+1,vector<int>(m+1,0));
+
+        int ans=0;
+
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(grid[i][j]==0 || vis[i][j]==1) continue;
+                ans+=fun(i,j,grid,vis,k);
+            }
+        }
+
+        return ans;
+    }
+};
