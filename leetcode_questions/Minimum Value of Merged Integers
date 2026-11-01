@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int minMergedInteger(vector<int>& nums) {
+        vector<int> ans;
+        for(int i=0; i<nums.size(); i +=2){
+            int a=nums[i];
+            int b = nums[i+1];
+
+            int tmp = b;
+            while(tmp>0){
+                a *= 10;
+                tmp /= 10;
+            }
+            ans.push_back(a+b);
+        }
+        sort(ans.begin(), ans.end());
+        return ans[0];
+        
+    }
+};
