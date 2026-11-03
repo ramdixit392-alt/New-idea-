@@ -1,0 +1,33 @@
+int dp[1000][1000];
+
+int fun(vector<int>& wt, vector<int>& price, int max_wt, int i) {
+
+    if(i < 0 || max_wt == 0) {
+        return 0;
+    }
+    if(dp[i][max_wt] != -1) return dp[i][max_wt];
+
+    int p = 0;
+    int np = 0;
+
+    // Pick
+    if(max_wt >= wt[i]) {
+        p = price[i] + fun(wt, price, max_wt - wt[i], i - 1);
+    }
+
+    // Not Pick
+    np = fun(wt, price, max_wt, i - 1);
+
+    return dp[i][max_wt] = max(p, np);
+}
+
+class Solution {
+  public:
+    int knapsack(int W, vector<int> &val, vector<int> &wt) {
+
+        int n = wt.size();
+        memset(dp,-1,sizeof(dp));
+
+        return fun(wt, val, W, n - 1);
+    }
+};
