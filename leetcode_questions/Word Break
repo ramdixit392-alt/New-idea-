@@ -1,0 +1,45 @@
+class Solution {
+public:
+    map<string, int> dp;
+
+    int fun(int i, string s, map<string, int>& m1, string tmp) {
+
+        if (i >= s.length()) {
+            if (tmp.length() == 0)
+                return 1;
+
+            return 0;
+        }
+
+        string key = to_string(i) + "+" + tmp;
+
+        if (dp.find(key) != dp.end())
+            return dp[key];
+
+        int m = 0;
+
+        tmp += s[i];
+
+        if (m1.find(tmp) != m1.end()) {
+            int a = fun(i + 1, s, m1, "");
+            m = m | a;
+        }
+
+        int a = fun(i + 1, s, m1, tmp);
+        m = m | a;
+
+        return dp[key] = m;
+    }
+
+    bool wordBreak(string s, vector<string>& wordDict) {
+
+        map<string, int> m1;
+
+        for (auto a : wordDict)
+            m1[a]++;
+
+        dp.clear();
+
+        return fun(0, s, m1, "") == 1;
+    }
+};
