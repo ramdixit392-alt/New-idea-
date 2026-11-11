@@ -1,0 +1,27 @@
+class Solution {
+public:
+    long long minimumCost(int c1, int c2, int cb, int n1, int n2) {
+        long long l1=1LL*n1*c1 + 1LL*n2*c2;
+
+        long long mm=1e16;
+        
+        if(n1<n2){
+            long long l2=1LL*min(n1,n2) * cb + 1LL*abs(n1-n2) * c2;
+            l1=min(l1,l2);
+        }
+        else if(n1>n2){
+            long long l2=1LL*min(n1,n2) * cb + 1LL*abs(n1-n2) * c1;
+            //cout<<l2<<" ";
+            l1=min(l1,l2);
+        }
+        else{
+            long long l2=1LL*min(n1,n2) * cb ;
+            l1=min(l1,l2);
+        }
+
+        long long l2=1LL*max(n1,n2)*cb;
+        l1=min(l1,l2);
+
+        return l1;
+    }
+};
