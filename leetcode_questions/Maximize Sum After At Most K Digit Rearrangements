@@ -1,0 +1,21 @@
+class Solution {
+public:
+    long long maximizeSum(vector<int>& nums, int k) {
+        long long sum = 0;
+        vector<long long> v1;
+
+        for(int x : nums){
+            sum += x;
+            string s = to_string(x);
+            sort(s.begin(), s.end(), greater<char>());
+            long long num = stoll(s);
+            v1.push_back(num - x);
+            
+        }
+        sort(v1.rbegin(), v1.rend());
+        for(int i = 0; i < k; i++){
+        sum += v1[i];
+        }
+        return sum;
+    }
+};
