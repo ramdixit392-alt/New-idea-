@@ -1,0 +1,17 @@
+
+
+int fun(int curr, int n){
+    if(curr == n) return 1;
+    if(curr > n) return 0;
+    
+    int k = fun(curr + 1, n) + fun(curr + 2, n) + fun(curr + 3, n);
+    return k;
+}
+class Solution {
+  public:
+    int countWays(int n) {
+        // your code here
+        return fun(0, n);
+        
+    }
+};
