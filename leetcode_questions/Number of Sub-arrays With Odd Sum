@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int numOfSubarrays(vector<int>& arr) {
+        long long od=0,ev=0;
+
+        long long s=0,ans=0;
+
+        for(int i=0;i<arr.size();i++){
+            s+=arr[i];
+
+            if(s%2==0){
+                ans+=od;
+            }else{
+                ans++;
+                ans+=ev;
+            }
+
+            if(s%2==0) ev++;
+            else od++;
+
+            ans=(ans)%1000000007;
+        }
+
+        return ans;
+    }
+};
