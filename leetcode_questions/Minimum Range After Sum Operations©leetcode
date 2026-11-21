@@ -1,0 +1,10 @@
+class Solution {
+public:
+    int minRange(int a, int b, int c) {
+        vector<int> v1={a, b, c};
+        sort(v1.begin(), v1.end());
+
+        return min(v1[2]-v1[0], v1[1]);
+        
+    }
+};©leetcode
