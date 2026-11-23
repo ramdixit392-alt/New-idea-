@@ -1,0 +1,31 @@
+
+class ProductOfNumbers {
+public:
+    vector<int> v1;
+    long long p = 1;
+
+    ProductOfNumbers() {
+        v1.clear();
+    }
+
+    void add(int num) {
+        if(num == 0) {
+            v1.clear();
+            p = 1;
+        }
+        else {
+            p *= num;
+            v1.push_back(p);
+        }
+    }
+
+    int getProduct(int k) {
+        int n = v1.size();
+
+        if(k > n) return 0;
+
+        if(k == n) return v1[n-1];
+
+        return v1[n-1] / v1[n-k-1];
+    }
+};
