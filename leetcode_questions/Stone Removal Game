@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool canAliceWin(int n) {
+        int a=1;
+        int r=10;
+
+        while(1){
+            if(r>n) return !a;
+            n=n-r;
+            r--;
+            a=!a;
+        }
+        return 0;
+    }
+};
