@@ -1,0 +1,21 @@
+class Solution {
+public:
+    long long minCost(vector<int>& nums) {
+        int n=nums.size();
+
+        long long mincost=nums[0]+nums[n-1], sum=mincost;
+
+        if(n==2 || n==3) return mincost;
+
+        sort(nums.begin()+1, nums.end()-1);
+
+        int limit = n%2==0 ? n-2 : n-3;
+
+        for(int i=1;i<limit;i+=2){
+            sum+=nums[i]+nums[i+1];
+            mincost=min(mincost, sum);
+        }
+
+        return mincost;
+    }
+};
