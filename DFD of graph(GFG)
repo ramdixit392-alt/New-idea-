@@ -1,0 +1,28 @@
+class Solution {
+  public:
+    void dfs(int start, vector<vector<int>>& adj, vector<int>& vis,
+              vector<int>& result) {
+                  
+        vis[start] = 1;
+
+        result.push_back(start);
+        
+        for (int neigh : adj[start]) {
+
+            if (vis[neigh] == 0) {
+                dfs(neigh, adj, vis, result);
+            }
+        }
+    }
+  
+    vector<int> dfs(vector<vector<int>>& adj) {
+        int n = adj.size();
+        
+        vector<int> vis(n, 0);
+        vector<int> result;
+
+        dfs(0, adj, vis, result);
+
+        return result;   
+    }
+};
